@@ -1,0 +1,7 @@
+{
+  "name": "TaggerFE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
