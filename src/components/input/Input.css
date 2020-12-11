@@ -1,0 +1,28 @@
+.inputItem {
+    border-bottom: 3px solid white;
+    height: 52px;
+    width: 100%;
+    display: inline-flex;
+    color: white;
+    --background: transparent;
+}
+
+.inputItem.item-has-focus {
+    color: red;
+    border-bottom: 3px solid red;
+}
+
+.inputItem.item-has-focus > .inputIcon {
+    color: red;
+}
+
+.inputText {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.inputIcon {
+    margin: auto;
+    font-size: 30px;
+    color: white;
+}
