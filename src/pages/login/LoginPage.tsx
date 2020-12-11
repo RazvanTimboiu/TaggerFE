@@ -100,7 +100,7 @@ const LoginPage: React.FC = () => {
                             <Input
                                 name="username"
                                 type="text"
-                                icon="mail"
+                                icon="person"
                                 placeholder="Username"
                                 required
                                 handleBlur={handleBlur}
