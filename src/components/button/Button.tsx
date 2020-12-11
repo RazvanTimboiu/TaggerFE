@@ -1,6 +1,8 @@
 import React from "react";
-import { IonButton } from "@ionic/react";
 import "./Button.css";
+
+/* Ionic Components */
+import { IonButton } from "@ionic/react";
 
 interface ButtonProps {
     text: string;

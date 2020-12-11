@@ -1,18 +1,21 @@
 import React from "react";
 import "./Input.css";
 
+/* Ionic Components */
 import { IonIcon, IonInput, IonItem } from "@ionic/react";
 
+/* Ionicons */
 import {
-    personCircleOutline,
+    personOutline,
     lockClosedOutline,
     textOutline,
     pencilOutline,
+    mailOutline,
 } from "ionicons/icons";
 
 interface InputProps {
     type: "password" | "email" | "text";
-    icon: "lock" | "mail" | "text" | "pen";
+    icon: "lock" | "mail" | "text" | "pen" | "person";
     placeholder: string;
     required?: boolean;
     handleBlur: (e: any) => void;
@@ -45,7 +48,7 @@ const Input: React.FC<InputProps> = ({
 const selected = (icon: string) => {
     switch (icon) {
         case "mail": {
-            return personCircleOutline;
+            return mailOutline;
         }
         case "lock": {
             return lockClosedOutline;
@@ -55,6 +58,9 @@ const selected = (icon: string) => {
         }
         case "pen": {
             return pencilOutline;
+        }
+        case "person": {
+            return personOutline;
         }
         default: {
             return undefined;

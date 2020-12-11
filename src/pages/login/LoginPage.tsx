@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 
-import Input from "../../components/input/Input";
-import { loginMessages } from "../../constants/messages/loginMessages";
-
+/* Ionic Components */
 import {
     IonCol,
     IonContent,
@@ -12,8 +10,14 @@ import {
     IonText,
     IonPage,
 } from "@ionic/react";
-import Button from "../../button/Button";
+
+/* Custom Components */
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
 import ErrorMessage from "../../components/error/ErrorMessage";
+
+/* Constants */
+import { loginMessages } from "../../constants/messages/loginMessages";
 
 interface LoginPageState {
     username: string;
@@ -99,7 +103,7 @@ const LoginPage: React.FC = () => {
                             <Input
                                 name="username"
                                 type="text"
-                                icon="mail"
+                                icon="person"
                                 placeholder="Username"
                                 required
                                 handleBlur={handleBlur}

@@ -2,7 +2,8 @@
     width: 100%;
     --background: red;
     border-radius: 4px;
-    font-size: 100%;
-    color: var(--docubb-color-light);
+    font-size: 120%;
+    font-family: Verdana;
+    color: white;
     letter-spacing: 0;
 }
