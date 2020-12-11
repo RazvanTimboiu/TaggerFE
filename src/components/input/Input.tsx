@@ -16,21 +16,26 @@ interface InputProps {
     placeholder: string;
     required?: boolean;
     handleBlur: (e: any) => void;
+    name?: string;
 }
 const Input: React.FC<InputProps> = ({
     type,
     icon,
     placeholder,
     required,
+    name,
+    handleBlur,
 }: InputProps) => {
     return (
         <IonItem className="inputItem" lines="none">
             <IonIcon className="inputIcon" icon={selected(icon)} />
             <IonInput
+                name={name}
                 className="inputText"
                 type={type}
                 placeholder={placeholder}
                 required={required}
+                onIonBlur={handleBlur}
                 clearOnEdit={false}
             />
         </IonItem>

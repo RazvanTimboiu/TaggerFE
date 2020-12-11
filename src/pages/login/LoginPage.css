@@ -1,0 +1,19 @@
+.ionGridL {
+    width: 100%;
+    height: 100%;
+}
+
+.ionContentL {
+    --padding-top: 10vh;
+    --background: black;
+}
+
+.ionButtonRowPaddingL {
+    padding-top: 10vh;
+}
+
+.ionTextL {
+    color: white;
+    text-align: center;
+    font-size: 10vh;
+}
