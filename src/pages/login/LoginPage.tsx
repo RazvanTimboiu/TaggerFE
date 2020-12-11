@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 
-import Input from "../../components/input/Input";
-import { loginMessages } from "../../constants/messages/loginMessages";
-
+/* Ionic Components */
 import {
     IonCol,
     IonContent,
@@ -13,8 +11,13 @@ import {
     IonPage,
 } from "@ionic/react";
 
-import ErrorMessage from "../../components/error/ErrorMessage";
+/* Custom Components */
+import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
+import ErrorMessage from "../../components/error/ErrorMessage";
+
+/* Constants */
+import { loginMessages } from "../../constants/messages/loginMessages";
 
 interface LoginPageState {
     username: string;

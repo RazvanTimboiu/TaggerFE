@@ -1,6 +1,8 @@
 import React from "react";
-import { IonText, IonItem } from "@ionic/react";
 import "./ErrorMessage.css";
+
+/* Ionic Components */
+import { IonText } from "@ionic/react";
 
 interface ErrorProps {
     message: string;

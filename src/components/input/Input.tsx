@@ -1,8 +1,10 @@
 import React from "react";
 import "./Input.css";
 
+/* Ionic Components */
 import { IonIcon, IonInput, IonItem } from "@ionic/react";
 
+/* Ionicons */
 import {
     personOutline,
     lockClosedOutline,
