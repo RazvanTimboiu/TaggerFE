@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./LoginPage.css";
 
 import Input from "../../components/input/Input";
+import { loginMessages } from "../../constants/messages/loginMessages";
 
 import {
     IonCol,
@@ -23,15 +24,57 @@ const initialState: LoginPageState = {
     password: "",
 };
 
+interface LoginPageErrorState {
+    isError: boolean;
+    errorMessage: string;
+}
+
+const initialErrorState: LoginPageErrorState = {
+    isError: false,
+    errorMessage: "",
+};
+
 const LoginPage: React.FC = () => {
     const [loginData, setLoginData] = useState<LoginPageState>(initialState);
+    const [errorData, setErrorData] = useState<LoginPageErrorState>(
+        initialErrorState
+    );
 
     const handleBlur = (e: any) => {
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
     };
 
+    const validateUsername = () => {
+        if (loginData.username === "") return loginMessages.emptyUsername;
+    };
+
+    const validatePassword = () => {
+        if (loginData.password === "") return loginMessages.emptyPassword;
+    };
+
+    const validateCredentials = () => {
+        let errorUsername = validateUsername();
+        let errorPassword = validatePassword();
+
+        if (errorUsername || errorPassword) {
+            setErrorData({
+                isError: true,
+                errorMessage:
+                    (errorUsername === undefined ? "" : errorUsername) +
+                    (errorPassword === undefined ? "" : errorPassword),
+            });
+            return false;
+        }
+        return true;
+    };
+
     const handleLogin = () => {
-        console.log("Login is not functional yet!");
+        const isValid = validateCredentials();
+        if (isValid) {
+            console.log("The data entered is valid!");
+        } else {
+            console.log(errorData.errorMessage);
+        }
     };
 
     return (
