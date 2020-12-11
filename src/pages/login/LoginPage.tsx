@@ -13,6 +13,7 @@ import {
     IonPage,
 } from "@ionic/react";
 import Button from "../../button/Button";
+import ErrorMessage from "../../components/error/ErrorMessage";
 
 interface LoginPageState {
     username: string;
@@ -64,6 +65,11 @@ const LoginPage: React.FC = () => {
                     (errorPassword === undefined ? "" : errorPassword),
             });
             return false;
+        } else {
+            setErrorData({
+                isError: false,
+                errorMessage: "",
+            });
         }
         return true;
     };
@@ -112,6 +118,15 @@ const LoginPage: React.FC = () => {
                             />
                         </IonCol>
                     </IonRow>
+                    {errorData.isError && (
+                        <IonRow className="ion-justify-content-center">
+                            <IonCol sizeMd="6" sizeLg="4" sizeXs="10">
+                                <ErrorMessage
+                                    message={errorData.errorMessage}
+                                />
+                            </IonCol>
+                        </IonRow>
+                    )}
                     <IonRow className="ionButtonRowPaddingL ion-justify-content-center">
                         <IonCol sizeMd="2" sizeLg="1.5" sizeXs="5">
                             <Button

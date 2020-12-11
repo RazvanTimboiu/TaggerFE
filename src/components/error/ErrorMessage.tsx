@@ -8,9 +8,9 @@ interface ErrorProps {
 
 const ErrorMessage: React.FC<ErrorProps> = ({ message }: ErrorProps) => {
     return (
-        <IonItem className="errorItem">
+        <div className="errorItem">
             <IonText>{message}</IonText>
-        </IonItem>
+        </div>
     );
 };
 
