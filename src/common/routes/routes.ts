@@ -1,4 +1,6 @@
 export const routes = {
     login: "/login",
-    home: "/prea_creier",
+    home: "/home",
+    forbidden: "/forbidden",
+    notFound: "/not-found",
 };
