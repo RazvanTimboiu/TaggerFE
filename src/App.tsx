@@ -33,6 +33,7 @@ import {
     setStorageType,
     StateMachineProvider,
 } from "little-state-machine";
+import ProtectedRoute from "./common/routes/ProtectedRoute";
 
 const initialState: AppState = {
     userState: {},
@@ -48,6 +49,7 @@ const App: React.FC = () => (
             <IonReactRouter>
                 <IonRouterOutlet>
                     <Route path={routes.login} component={LoginPage} />
+                    <ProtectedRoute path={routes.home} />
                 </IonRouterOutlet>
             </IonReactRouter>
         </IonApp>
