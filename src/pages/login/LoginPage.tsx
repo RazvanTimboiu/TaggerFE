@@ -19,6 +19,12 @@ import ErrorMessage from "../../components/error/ErrorMessage";
 /* Constants */
 import { loginMessages } from "../../constants/messages/loginMessages";
 
+import UserApi from "../../api/UserApi";
+import action, { useStateMachine } from "little-state-machine";
+import { updateUser } from "../../actions/account";
+import { useHistory } from "react-router";
+import { routes } from "../../common/routes/routes";
+
 interface LoginPageState {
     username: string;
     password: string;
@@ -40,6 +46,9 @@ const initialErrorState: LoginPageErrorState = {
 };
 
 const LoginPage: React.FC = () => {
+    const { action } = useStateMachine(updateUser);
+    const history = useHistory();
+
     const [loginData, setLoginData] = useState<LoginPageState>(initialState);
     const [errorData, setErrorData] = useState<LoginPageErrorState>(
         initialErrorState
@@ -78,12 +87,23 @@ const LoginPage: React.FC = () => {
         return true;
     };
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         const isValid = validateCredentials();
         if (isValid) {
-            console.log("The data entered is valid!");
-        } else {
-            console.log(errorData.errorMessage);
+            UserApi.login({
+                username: loginData.username,
+                password: loginData.password,
+            })
+                .then((data) => {
+                    action(data);
+                    history.push(routes.home);
+                })
+                .catch((err) => {
+                    setErrorData({
+                        isError: true,
+                        errorMessage: "Credentials do not match !",
+                    });
+                });
         }
     };
 

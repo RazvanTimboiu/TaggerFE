@@ -27,15 +27,31 @@ import { routes } from "./common/routes/routes";
 
 /* Pages */
 import LoginPage from "./pages/login/LoginPage";
+import { AppState } from "./common/states/appState";
+import {
+    createStore,
+    setStorageType,
+    StateMachineProvider,
+} from "little-state-machine";
+
+const initialState: AppState = {
+    userState: {},
+};
+setStorageType(localStorage);
+const localData = localStorage.getItem("STATE_MACHINE");
+const state = localData === null ? initialState : JSON.parse(localData);
+createStore(state);
 
 const App: React.FC = () => (
-    <IonApp>
-        <IonReactRouter>
-            <IonRouterOutlet>
-                <Route path={routes.login} component={LoginPage} />
-            </IonRouterOutlet>
-        </IonReactRouter>
-    </IonApp>
+    <StateMachineProvider>
+        <IonApp>
+            <IonReactRouter>
+                <IonRouterOutlet>
+                    <Route path={routes.login} component={LoginPage} />
+                </IonRouterOutlet>
+            </IonReactRouter>
+        </IonApp>
+    </StateMachineProvider>
 );
 
 export default App;

@@ -5,11 +5,15 @@ export default class Api {
 
     public constructor(config?: AxiosRequestConfig) {
         this.api = axios.create(config);
-        this.api.interceptors.request.use((param: AxiosRequestConfig) => ({
-            baseUrl: process.env.API_BASE_URL,
-            ...param,
-        }));
+
+        this.api.interceptors.request.use((config: AxiosRequestConfig) => {
+            const token = this.getCurrentUserToken();
+            config.headers.Authorization = token ? `${token}` : "";
+            return config;
+        });
+
         this.api.interceptors.response.use(({ data }: AxiosResponse) => data);
+
         this.getUri = this.getUri.bind(this);
         this.request = this.request.bind(this);
         this.get = this.get.bind(this);
@@ -18,9 +22,17 @@ export default class Api {
         this.put = this.put.bind(this);
     }
 
+    private getCurrentUserToken() {
+        const currentUser = sessionStorage.getItem("STATE_MACHINE");
+        return currentUser === null
+            ? ""
+            : JSON.parse(currentUser).account.token;
+    }
+
     protected getUri(config?: AxiosRequestConfig): string {
         return this.api.getUri(config);
     }
+
     protected request<T>(config: AxiosRequestConfig): Promise<T> {
         return this.api.request(config);
     }

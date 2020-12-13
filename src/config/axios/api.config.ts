@@ -2,7 +2,7 @@ import * as qs from "qs";
 import { PathLike } from "fs";
 
 export const apiConfig = {
-    baseURL: "http://localhost:8080/",
+    baseURL: "https://localhost:44325/api",
     headers: {
         common: {
             "Cache-Control": "no-cache, no-store",
