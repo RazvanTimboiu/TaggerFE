@@ -27,6 +27,9 @@ import { routes } from "./common/routes/routes";
 
 /* Pages */
 import LoginPage from "./pages/login/LoginPage";
+import NotFound from "./pages/not-found/NotFound";
+import Forbidden from "./pages/forbidden/Forbidden";
+
 import { AppState } from "./common/states/appState";
 import {
     createStore,
@@ -49,7 +52,7 @@ const App: React.FC = () => (
             <IonReactRouter>
                 <IonRouterOutlet>
                     <Route path={routes.login} component={LoginPage} />
-                    <ProtectedRoute path={routes.home} />
+                    <ProtectedRoute path={routes.home} Component={NotFound} />
                 </IonRouterOutlet>
             </IonReactRouter>
         </IonApp>

@@ -6,7 +6,7 @@ import { routes } from "./routes";
 import { AppState } from "../../common/states/appState";
 
 interface ProtectedRouteProps {
-    Component?: React.FC<RouteComponentProps>;
+    Component: React.FC<RouteComponentProps>;
     path: string;
     exact?: boolean;
     requiredRole?: Role | boolean;
@@ -20,7 +20,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     const {
         state: { userState },
     } = useStateMachine<AppState>();
-    const isNotAuthed = !userState.jwt;
+    const isNotAuthed = !!userState.jwt;
 
     const isAuthorized = isNotAuthed
         ? false
