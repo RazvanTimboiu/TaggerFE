@@ -23,4 +23,4 @@ export class UserApi extends Api {
     }
 }
 
-export default new UserApi(apiConfig);
+export const userApi = new UserApi(apiConfig);
