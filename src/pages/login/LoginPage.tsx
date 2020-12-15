@@ -19,8 +19,8 @@ import ErrorMessage from "../../components/error/ErrorMessage";
 /* Constants */
 import { loginMessages } from "../../constants/messages/loginMessages";
 
-import UserApi from "../../api/UserApi";
-import action, { useStateMachine } from "little-state-machine";
+import { userApi } from "../../api/UserApi";
+import { useStateMachine } from "little-state-machine";
 import { updateUser } from "../../actions/account";
 import { useHistory } from "react-router";
 import { routes } from "../../common/routes/routes";
@@ -90,10 +90,11 @@ const LoginPage: React.FC = () => {
     const handleLogin = async () => {
         const isValid = validateCredentials();
         if (isValid) {
-            UserApi.login({
-                username: loginData.username,
-                password: loginData.password,
-            })
+            userApi
+                .login({
+                    username: loginData.username,
+                    password: loginData.password,
+                })
                 .then((data) => {
                     action(data);
                     history.push(routes.home);

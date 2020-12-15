@@ -42,7 +42,7 @@ const initialState: AppState = {
     userState: {},
 };
 setStorageType(localStorage);
-const localData = localStorage.getItem("STATE_MACHINE");
+const localData = localStorage.getItem("__STATE__MACHINE__");
 const state = localData === null ? initialState : JSON.parse(localData);
 createStore(state);
 

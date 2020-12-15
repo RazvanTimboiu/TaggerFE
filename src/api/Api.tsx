@@ -8,7 +8,7 @@ export default class Api {
 
         this.api.interceptors.request.use((config: AxiosRequestConfig) => {
             const token = this.getCurrentUserToken();
-            config.headers.Authorization = token ? `${token}` : "";
+            config.headers.Authorization = token ? `Bearer ${token}` : "";
             return config;
         });
 
@@ -23,10 +23,10 @@ export default class Api {
     }
 
     private getCurrentUserToken() {
-        const currentUser = sessionStorage.getItem("STATE_MACHINE");
+        const currentUser = localStorage.getItem("__STATE_MACHINE__");
         return currentUser === null
             ? ""
-            : JSON.parse(currentUser).account.token;
+            : JSON.parse(currentUser).userState.token;
     }
 
     protected getUri(config?: AxiosRequestConfig): string {
